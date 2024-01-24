@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:sole_market_project/pages/home_screen.dart';
 import 'package:sole_market_project/pages/list_of_sneakers_screen.dart';
 import 'package:sole_market_project/pages/profile_screen.dart';
 
@@ -22,9 +23,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
   }
 
   final List<Widget> _pages = [
-    BottomNavBar(),
-    ProfileScreen(),
-    SneakerListScreen(),
+    const HomeScreen(),
+    const ProfileScreen(),
+    const SneakerListScreen()
   ];
 
   @override
