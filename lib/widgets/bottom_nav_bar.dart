@@ -51,6 +51,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             selectedIndex: _selectedIndex,
             onTabChange: _navigateBottomBar,
             padding: const EdgeInsets.all(20),
+            duration: const Duration(milliseconds: 200),
             tabs: const [
               GButton(icon: Icons.home, text: 'Home'),
               GButton(icon: Icons.search_rounded, text: 'Search'),
