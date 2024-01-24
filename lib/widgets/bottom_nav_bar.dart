@@ -24,15 +24,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   final List<Widget> _pages = [
     const HomeScreen(),
-    const ProfileScreen(),
-    const SneakerListScreen()
+    const SneakerListScreen(),
+    const ProfileScreen()
+    
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Demo'),
+        title: const Text('Welcome back, Raul!'),
         backgroundColor: Colors.blue,
         ),
 
