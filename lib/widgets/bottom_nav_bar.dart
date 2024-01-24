@@ -1,43 +1,63 @@
-// import 'package:flutter/material.dart';
-// import 'package:sole_market_project/pages/home_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:sole_market_project/pages/list_of_sneakers_screen.dart';
+import 'package:sole_market_project/pages/profile_screen.dart';
 
+class BottomNavBar extends StatefulWidget {
+  const BottomNavBar({super.key});
 
-// class Pages extends StatefulWidget {
-//   @override
-//   createState() => new PagesState();
-// }
+  @override
+  State<BottomNavBar> createState() => _BottomNavBarState();
+}
 
-// class PagesState extends State<Pages> {
-//   int pageIndex = 0;
+class _BottomNavBarState extends State<BottomNavBar> {
 
-//   // Create all the pages once and return same instance when required
-//   final home_screen _profilePage = new ProfilePage(); 
-//   final PlanPage _planPage = new PlanPage();
-//   final StartUpNamerPage _startUpNamerPage = new StartUpNamerPage();
+  int _selectedIndex = 0;
 
+  void _navigateBottomBar(int index){
+    setState(() {
+      _selectedIndex = index;
+    });
+    //print(_selectedIndex);
+  }
 
-//   Widget pageChooser() {
-//     switch (this.pageIndex) {
-//       case 0:
-//         return _profilePage;
-//         break;
+  final List<Widget> _pages = [
+    BottomNavBar(),
+    ProfileScreen(),
+    SneakerListScreen(),
+  ];
 
-//       case 1:
-//         return _planPage;
-//         break;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Flutter Demo'),
+        backgroundColor: Colors.blue,
+        ),
 
-//       case 2:
-//         return _startUpNamerPage;
-//         break;
-
-//       default:
-//         return Container(
-//           child: Center(
-//               child: Text(
-//                   'No page found by page chooser.',
-//                   style: new TextStyle(fontSize: 30.0)
-//               )
-//           ),
-//         );
-//     }
-//   }
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: Container(
+        color: Colors.black,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+          
+          child: GNav(
+            backgroundColor: Colors.black,
+            color: Colors.white,
+            activeColor: Colors.white,
+            tabBackgroundColor: Colors.grey.shade800,
+            gap: 10,
+            selectedIndex: _selectedIndex,
+            onTabChange: _navigateBottomBar,
+            padding: const EdgeInsets.all(20),
+            tabs: const [
+              GButton(icon: Icons.home, text: 'Home'),
+              GButton(icon: Icons.search_rounded, text: 'Search'),
+              GButton(icon: Icons.settings, text: 'Profile'),
+            ]
+          ),
+        ),
+      ),
+    );
+  }
+}

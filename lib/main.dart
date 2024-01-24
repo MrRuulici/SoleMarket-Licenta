@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pages/home_screen.dart';
+import 'package:sole_market_project/widgets/bottom_nav_bar.dart';
 
 void main() {
   runApp(const MainApp());
@@ -14,7 +14,7 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'SoleMarket - Incoming project',
       theme: ThemeData(useMaterial3: true),
-      home: const HomeScreen(),
+      home: const BottomNavBar(),
     );
   }
 }
