@@ -1,19 +1,27 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sole_market_project/widgets/my_button.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
-  @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
 
-class _ProfileScreenState extends State<ProfileScreen> {
+ void signOutUser() {
+    FirebaseAuth.instance.signOut();
+  }
+
   @override
- Widget build(BuildContext context) {
-    return const Center(
-        child: Text(
-      'Profile Screen',
-      style: TextStyle(fontSize: 30),
-    ));
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // body: Center(
+      //   child: MyButton(onTap: signOutUser()),
+      // ),
+      
+      appBar: AppBar(
+        actions: [IconButton(onPressed: signOutUser, icon: const Icon(Icons.logout))],
+      ),
+      body: const Center(child: Text("Profile Page",
+      style: TextStyle(fontSize: 30),),)
+    );
   }
 }

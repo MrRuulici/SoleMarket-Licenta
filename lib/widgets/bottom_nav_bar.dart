@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:sole_market_project/pages/home_screen.dart';
@@ -10,6 +11,8 @@ class BottomNavBar extends StatefulWidget {
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
+
+final user = FirebaseAuth.instance.currentUser!;
 
 class _BottomNavBarState extends State<BottomNavBar> {
 
@@ -33,7 +36,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Welcome back, Raul!'),
+        title: Text('Welcome back, ${user.email!}!'),
         backgroundColor: Colors.blue,
         ),
 
