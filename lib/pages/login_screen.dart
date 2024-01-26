@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sole_market_project/widgets/my_button.dart';
 import 'package:sole_market_project/widgets/text_field.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -8,6 +9,11 @@ class LoginScreen extends StatelessWidget {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
+  //sign in function
+  void signInUser() {
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,6 +21,7 @@ class LoginScreen extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
 
               const SizedBox(height: 50),
@@ -55,6 +62,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 10,),
 
               //forgot password
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: Row(
@@ -64,14 +72,69 @@ class LoginScreen extends StatelessWidget {
                     style: TextStyle(color: Colors.grey.shade600)),
                   ],
                 ),
-              )
+              ),
+
+              const SizedBox(height: 10,),
+
               //sign in button
-          
+
+              MyButton(onTap: signInUser),
+
+              const SizedBox(height: 40),
+
               //continue with
-          
+
+              Padding(
+               padding: const EdgeInsets.all(25.0),
+               child: Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey.shade600,
+                      )
+                  ),
+                  Padding(padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    'Login with',
+                    style: TextStyle(color: Colors.grey.shade800),
+                  )
+                  ),
+                  Expanded(
+                    child: Divider(
+                      thickness: 0.5,
+                      color: Colors.grey.shade600,
+                    )
+                  ),
+                  ],
+                ),
+             ),
+
               //google + anything else buttons
-          
+
+              // Row(
+              //   children: [
+              //     Image.asset('../images/pngegg.png',
+              //     height: 75,),
+              //   ],
+              // )
+
+               const SizedBox(height: 250),
+
               //register
+
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Don't have an account? "),
+                  Text("Register now",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  ),
+                ],
+              )
             ]
           ),
         ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sole_market_project/pages/home_screen.dart';
 import 'package:sole_market_project/pages/login_screen.dart';
 import 'package:sole_market_project/widgets/bottom_nav_bar.dart';
 
