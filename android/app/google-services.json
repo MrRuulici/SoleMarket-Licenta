@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "682262065752",
+    "project_id": "solemarket-licenta",
+    "storage_bucket": "solemarket-licenta.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682262065752:android:23a3e24b44311b2e88502d",
+        "android_client_info": {
+          "package_name": "com.example.sole_market_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqDHJoWqcVH05NEY3bCp7e-K7jvGAaNZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
