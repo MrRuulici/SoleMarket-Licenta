@@ -7,11 +7,13 @@ environment:
   sdk: '>=3.1.3 <4.0.0'
 
 dependencies:
+  carousel_slider: ^4.2.1
   firebase_auth: ^4.16.0
   firebase_core: ^2.24.2
   flutter:
     sdk: flutter
   google_nav_bar: ^5.0.6
+  http: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -20,3 +22,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - lib/images/air_max_270.png
+    - lib/images/puma_rsx.png
+    - lib/images/ultraboost21.png
+    - lib/images/google_logo.png

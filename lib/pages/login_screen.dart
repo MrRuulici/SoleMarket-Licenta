@@ -82,7 +82,7 @@ class LoginScreen extends StatelessWidget {
 
               //sign in button
 
-              MyButton(onTap: signInUser),
+              MyButton(onTap: signInUser, text: 'Sign In', color: Colors.black),
 
               const SizedBox(height: 40),
 
