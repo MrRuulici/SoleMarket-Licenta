@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget {
 
               const SizedBox(height: 70),
 
-              //welcome back
+              //welcome back text
               Text('Login with your credentials',
                 style: TextStyle(
                   color: Colors.grey.shade600,

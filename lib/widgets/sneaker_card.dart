@@ -7,7 +7,7 @@ class SneakerCard extends StatefulWidget {
   SneakerCard({super.key, required this.sneaker});
 
   final List<Map<String, dynamic>> sneakers = sneakersData;
-  final bool isFavorite = false;
+  //final bool isFavorite = false;
 
   @override
   _SneakerCardState createState() => _SneakerCardState();
@@ -15,7 +15,7 @@ class SneakerCard extends StatefulWidget {
 
 class _SneakerCardState extends State<SneakerCard> {
   
-
+  ///Code for Sneaker Card design and functionality
   @override
   Widget build(BuildContext context) {
     bool isFavorite = widget.sneaker['favorite'];

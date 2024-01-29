@@ -6,7 +6,7 @@ import 'package:sole_market_project/widgets/my_button.dart';
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
-
+/// Sign out function for the sign out button
  void signOutUser() {
     FirebaseAuth.instance.signOut();
   }
@@ -17,6 +17,7 @@ class ProfileScreen extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
+          //Person icon and logged in as text
           children: [
             const SizedBox(height: 50),
             const Icon(Icons.person,
@@ -27,7 +28,7 @@ class ProfileScreen extends StatelessWidget {
                 fontSize: 16,
                 ),textAlign: TextAlign.center,),
             const SizedBox(height: 470),
-            MyButton(onTap: signOutUser, text: 'Sign out', color: Colors.red),
+            MyButton(onTap: signOutUser, text: 'Sign out', color: Colors.red), // Sign out button
             ],
           
         )

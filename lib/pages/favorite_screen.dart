@@ -6,7 +6,7 @@ class FavoriteScreen extends StatelessWidget {
 FavoriteScreen({super.key});
 
 final List<Map<String, dynamic>> sneakers = sneakersData;
-final List<bool> favorites = List<bool>.filled(sneakersData.length, true);
+//final List<bool> favorites = List<bool>.filled(sneakersData.length, growable: true);  will do this later
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +14,18 @@ final List<bool> favorites = List<bool>.filled(sneakersData.length, true);
       appBar: AppBar(
         title: const Text('Favorite List'),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back), // back button
           onPressed: () {
             Navigator.pop(context);
           },
         ),
       ),
        body: ListView.builder(
-      itemCount: favorites.length,
+      itemCount: sneakers.length,
       itemBuilder: (context, index) {
-          return SneakerCard(sneaker: sneakers[index]);
+        if (sneakers[index]['favorite'] == true) {
+          return SneakerCard(sneaker: sneakers[index]); //Only favourite = true sneakers will be shown
+        }
       },
       // floatingActionButton: FloatingActionButton(
       //   onPressed: fetchUsers,

@@ -11,6 +11,7 @@ class SneakerListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Sneaker cards in a list view
       body: ListView.builder(
         itemCount: sneakers.length,
         itemBuilder: (context, index) {
@@ -18,7 +19,7 @@ class SneakerListScreen extends StatelessWidget {
       // floatingActionButton: FloatingActionButton(
       //   onPressed: fetchUsers,
       //   ),
-        },
+        }
     ),
     );
   }

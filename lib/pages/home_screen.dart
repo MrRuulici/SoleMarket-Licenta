@@ -6,9 +6,11 @@ import 'package:sole_market_project/widgets/sneaker_card.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
-
+  
+  /// List of sneakers
   final List<Map<String, dynamic>> sneakers = sneakersData;
 
+  /// Widget for the Carousel and text above it
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +53,8 @@ class HomeScreen extends StatelessWidget {
             ),
 
             const SizedBox(height: 10),
-
+            
+            /// Carousel Slider for Favorites
             CarouselSlider.builder(
               itemCount: sneakers.where((sneaker) => sneaker['favorite'] == true).length,
               itemBuilder: (BuildContext context, int index, int realIndex) {

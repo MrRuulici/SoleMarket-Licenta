@@ -6,6 +6,7 @@ import 'package:sole_market_project/widgets/bottom_nav_bar.dart';
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
 
+  ///this is for checking if the user is logged in or not, and redirecting to appropriate page
   @override
   Widget build(BuildContext context) {
     return Scaffold(

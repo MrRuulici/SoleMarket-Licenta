@@ -12,11 +12,11 @@ class BottomNavBar extends StatefulWidget {
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
-final user = FirebaseAuth.instance.currentUser!;
+final user = FirebaseAuth.instance.currentUser!; // Current user verified in firebase
 
 class _BottomNavBarState extends State<BottomNavBar> {
 
-  int _selectedIndex = 0;
+  int _selectedIndex = 0; //for changing pages
 
   void _navigateBottomBar(int index){
     setState(() {
@@ -25,7 +25,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     //print(_selectedIndex);
   }
 
-  final List<Widget> _pages = [
+  final List<Widget> _pages = [ //list of pages
     HomeScreen(),
     SneakerListScreen(),
     const ProfileScreen()
