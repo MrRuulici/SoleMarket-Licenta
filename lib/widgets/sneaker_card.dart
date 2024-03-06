@@ -1,78 +1,143 @@
 import 'package:flutter/material.dart';
-import 'package:sole_market_project/data/sneakers.dart';
 
-class SneakerCard extends StatefulWidget {
-  final Map<String, dynamic> sneaker;
-
-  SneakerCard({super.key, required this.sneaker});
-
-  final List<Map<String, dynamic>> sneakers = sneakersData;
-  //final bool isFavorite = false;
-
-  @override
-  _SneakerCardState createState() => _SneakerCardState();
-}
-
-class _SneakerCardState extends State<SneakerCard> {
+class SneakerCard extends StatelessWidget {
+  final String shoeName;
+  final String retailPrice;
+  final String description;
+  final String thumbnail;
   
-  ///Code for Sneaker Card design and functionality
+  const SneakerCard({
+    required this.shoeName,
+    required this.retailPrice,
+    required this.description,
+    required this.thumbnail,
+  });
+  
   @override
   Widget build(BuildContext context) {
-    bool isFavorite = widget.sneaker['favorite'];
-    return Card(
-      color: Colors.grey.shade200,
-      margin: const EdgeInsets.all(16),
+    return Container(
+      margin: const EdgeInsets.all(3),
+      width: 350,
+      height: 600,
+      decoration: BoxDecoration(
+        color: Colors.grey[400],
+        borderRadius: BorderRadius.circular(4),
+      ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset(
-            widget.sneaker['picture'],
-            height: 200,
-            fit: BoxFit.cover,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      widget.sneaker['name'],
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          widget.sneaker['favorite'] = !widget.sneaker['favorite'];
-                        });
-                      },
-                      child: Icon(
-                        isFavorite ? Icons.favorite : Icons.favorite_border,
-                        color: isFavorite ? Colors.red : null,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  widget.sneaker['description'],
-                  style: const TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'SKU: ${widget.sneaker['sku']}',
-                  style: const TextStyle(fontSize: 14, color: Colors.grey),
-                ),
-              ],
+          ClipRRect(
+            borderRadius: BorderRadius.circular(4),
+            child: Image(image: NetworkImage(thumbnail)),),
+          Text(
+            shoeName,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
           ),
-        ],
-      ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Retail Price: " + retailPrice),
+
+            ],
+            )
+          ],
+        ),
     );
   }
 }
+
+
+// margin: const EdgeInsets.symmetric(horizontal: 22, vertical: 10),
+      // width: MediaQuery.of(context).size.width,
+      // height: 180,
+      // decoration: BoxDecoration(
+      //   color: Colors.black,
+      //   borderRadius: BorderRadius.circular(15),
+      //   boxShadow: [
+      //     BoxShadow(
+      //       color: Colors.black.withOpacity(0.6),
+      //       offset: const Offset(
+      //         0.0,
+      //         10.0,
+      //       ),
+      //       blurRadius: 10.0,
+      //       spreadRadius: -6.0,
+      //     ),
+      //   ],
+      //   image: DecorationImage(
+      //     colorFilter: ColorFilter.mode(
+      //       Colors.black.withOpacity(0.35),
+      //       BlendMode.multiply,
+      //     ),
+      //     image: NetworkImage(thumbnail),
+      //     fit: BoxFit.cover,
+      //   ),
+      // ),
+      // child: Stack(
+      //   children: [
+      //     Align(
+      //       alignment: Alignment.center,
+      //       child:  Padding(
+      //         padding: EdgeInsets.symmetric(horizontal: 5.0),
+      //         child: Text(
+      //           shoeName,
+      //           style: const TextStyle(
+      //             fontSize: 19,
+      //           ),
+      //           overflow: TextOverflow.ellipsis,
+      //           maxLines: 2,
+      //           textAlign: TextAlign.center,
+      //         ),
+      //       ),
+      //     ),
+      //     Align(
+      //       alignment: Alignment.bottomLeft,
+      //       child: Row(
+      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //         children: [
+      //           Container(
+      //             padding: EdgeInsets.all(5),
+      //             margin: EdgeInsets.all(10),
+      //             decoration: BoxDecoration(
+      //               color: Colors.black.withOpacity(0.4),
+      //               borderRadius: BorderRadius.circular(15),
+      //             ),
+      //             child: Row(
+      //               children: [
+      //                const Icon(
+      //                   Icons.star,
+      //                   color: Colors.yellow,
+      //                   size: 18,
+      //                 ),
+      //                 SizedBox(width: 7),
+      //                 Text(retailPrice),
+      //               ],
+      //             ),
+      //           ),
+      //           Container(
+      //             padding: const EdgeInsets.all(5),
+      //             margin: const EdgeInsets.all(10),
+      //             decoration: BoxDecoration(
+      //               color: Colors.black.withOpacity(0.4),
+      //               borderRadius: BorderRadius.circular(15),
+      //             ),
+      //             child: Row(
+      //               children: [
+      //                 const Icon(
+      //                   Icons.schedule,
+      //                   color: Colors.yellow,
+      //                   size: 18,
+      //                 ),
+      //                const SizedBox(width: 7),
+      //                 Text(description),
+      //               ],
+      //             ),
+      //           )
+      //         ],
+      //       ),
+      //     ),
+      //   ],
+      // ),

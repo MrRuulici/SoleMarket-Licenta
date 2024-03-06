@@ -7,8 +7,8 @@ class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
   //text editing controllers
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   //sign in function
   void signInUser() async {

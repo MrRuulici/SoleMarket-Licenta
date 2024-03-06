@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade300,
       body: Center(
         child: Column(
           children: [
@@ -59,7 +60,7 @@ class HomeScreen extends StatelessWidget {
               itemCount: sneakers.where((sneaker) => sneaker['favorite'] == true).length,
               itemBuilder: (BuildContext context, int index, int realIndex) {
                 if (sneakers[index]['favorite'] == true) {
-                  return SneakerCard(sneaker: sneakers[index]);
+                 // return SneakerCard(shoeName: "Yeezy", cookTime: "30", rating: "10", thumbnailUrl: "https://images.stockx.com/images/adidas-Yeezy-Slide-Slate-Grey-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&trim=color&q=90&dpr=2&updated_at=1673938237");
                 } return const SizedBox.shrink();
               },
               options: CarouselOptions(
