@@ -12,15 +12,36 @@ class ProductScreen extends StatelessWidget {
         title: const Text('Product Details'),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Image.network(product.thumbnail),
-          Text(product.shoeName),
-          Text(product.retailPrice),
-          Text(product.description),
-        ],
-      )
-    );
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.network(product.thumbnail),
+            const SizedBox(height: 16),
+            RichText(
+              text: TextSpan(
+                text: product.shoeName,
+                style: const TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              "Retail Price: " + product.retailPrice,
+              style: TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              product.description,
+              style: TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
+      ),
+      );
+    
   
   }
 }

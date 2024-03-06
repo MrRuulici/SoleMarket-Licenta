@@ -12,13 +12,12 @@ class SneakerCard extends StatelessWidget {
     required this.description,
     required this.thumbnail,
   });
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(3),
-      width: 350,
-      height: 600,
+      height: 450,
       decoration: BoxDecoration(
         color: Colors.grey[400],
         borderRadius: BorderRadius.circular(4),
@@ -32,7 +31,7 @@ class SneakerCard extends StatelessWidget {
           Text(
             shoeName,
             style: const TextStyle(
-              fontSize: 20,
+              fontSize: 12,
               fontWeight: FontWeight.bold,
             ),
           ),

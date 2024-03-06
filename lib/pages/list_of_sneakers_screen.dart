@@ -4,6 +4,7 @@ import 'package:sole_market_project/models/sneaker_class.dart';
 import 'package:sole_market_project/pages/product_screen.dart';
 import 'package:sole_market_project/widgets/sneaker_card.dart';
 import 'package:sole_market_project/widgets/user_service.dart';
+import 'package:provider/provider.dart';
 class SneakerListScreen extends StatefulWidget {
   const SneakerListScreen({super.key, Function()? loadUser});
 
@@ -54,12 +55,18 @@ class _SneakerListScreenState extends State<SneakerListScreen> {
                 builder: (context) => ProductScreen(product: sneaker),
               ),
               ),
-              child: SneakerCard(
-              shoeName: _sneakers![index].shoeName,
-              retailPrice: _sneakers![index].retailPrice,
-              description: _sneakers![index].description,
-              thumbnail: _sneakers![index].thumbnail,
-            ),
+              child: Padding(
+                 padding: const EdgeInsets.symmetric(
+                      vertical: 4.0, // Increase the top and bottom padding
+                      horizontal: 8.0,
+                    ),
+                child: SneakerCard(
+                shoeName: _sneakers![index].shoeName,
+                retailPrice: _sneakers![index].retailPrice,
+                description: _sneakers![index].description,
+                thumbnail: _sneakers![index].thumbnail,
+                            ),
+              ),
             );
           },
         ),
