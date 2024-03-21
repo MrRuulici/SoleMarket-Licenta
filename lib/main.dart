@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sole_market_project/pages/auth_page.dart';
 import 'package:sole_market_project/pages/login_screen.dart';
+import 'package:sole_market_project/pages/main_page.dart';
 import 'package:sole_market_project/widgets/bottom_nav_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -22,8 +23,7 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'SoleMarket - Incoming project',
       theme: ThemeData(useMaterial3: true),
-      //home: const BottomNavBar(),
-      home: const AuthPage(),
+      home: const MainPage(),
     );
   }
 }

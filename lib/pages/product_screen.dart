@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sole_market_project/models/sneaker_class.dart';
+import 'dart:html';
 
 class ProductScreen extends StatelessWidget {
   final Sneaker product;
@@ -32,13 +33,36 @@ class ProductScreen extends StatelessWidget {
               "Retail Price: " + product.retailPrice,
               style: TextStyle(fontSize: 24),
             ),
+            const SizedBox(height: 5),
+            Text("See on:"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                    onPressed: () {
+                      final url = product.stockxLink;
+                      window.open(url, 'See on');
+                    }, child: const Text('StockX')),
+                TextButton(
+                    onPressed: () {
+                      final url = product.goatLink;
+                      window.open(url, 'See on');
+                    }, child: const Text('Goat')),
+                TextButton(
+                    onPressed: () {
+                      final url = product.flightClubLink;
+                      window.open(url, 'See on');
+                    }, child: const Text('FlightClub')),
+              ],
+            ),
+            
+                
             const SizedBox(height: 20),
             Text(
               product.description,
               style: TextStyle(fontSize: 16),
             ),
-          ],
-        ),
+          ],),
       ),
       );
     

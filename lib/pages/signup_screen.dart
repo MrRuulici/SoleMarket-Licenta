@@ -1,33 +1,44 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sole_market_project/pages/signup_screen.dart';
+import 'package:get/get.dart';
+import 'package:sole_market_project/models/signup_controller.dart';
 import 'package:sole_market_project/widgets/my_button.dart';
 import 'package:sole_market_project/widgets/text_field.dart';
 
-class LoginScreen extends StatefulWidget {
+class SignupScreen extends StatefulWidget {
+  final VoidCallback showLoginPage;
+  const SignupScreen({super.key, required this.showLoginPage});
 
-  final VoidCallback showRegisterPage;
-  const LoginScreen({super.key, required this.showRegisterPage});
+  
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  //text editing controllers
+class _SignupScreenState extends State<SignupScreen> {
+
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  //sign in function
-  void signInUser() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailController.text, 
-      password: passwordController.text
-      );
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
   }
 
+  Future signUpUser() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: emailController.text,
+      password: passwordController.text,
+    );
+  }
+
+  // Future signup
+
   @override
-  Widget build(BuildContext context) {
+   Widget build(BuildContext context) {
+    final controller = Get.put(SignUpController());
+    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
       body: SafeArea(
@@ -46,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 70),
 
               //welcome back text
-              Text('Login with your credentials',
+              Text('Register now',
                 style: TextStyle(
                   color: Colors.grey.shade600,
                   fontSize: 16,
@@ -71,32 +82,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 obscureText: true,
               ),
 
+              const SizedBox(height: 20),
 
-              const SizedBox(height: 10,),
+              //confirm password field
 
-              //forgot password
-
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    GestureDetector(
-                      onTap: widget.showRegisterPage,
-                      child: Text(
-                        'Forgot Password?',
-                        style: TextStyle(color: Colors.grey.shade600),
-                      ),
-                    ),
-                  ],
-                ),
+              BasicTextField(
+                controller: passwordController,
+                hintText: 'Confirm Password',
+                obscureText: true,
               ),
+
 
               const SizedBox(height: 10,),
 
               //sign in button
 
-              MyButton(onTap: signInUser, text: 'Sign In', color: Colors.black),
+              MyButton(onTap: signUpUser, text: 'Sign up', color: Colors.black),
 
               const SizedBox(height: 40),
 
@@ -114,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Padding(padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Text(
-                    'Login with',
+                    'Register with',
                     style: TextStyle(color: Colors.grey.shade800),
                   )
                   ),
@@ -128,16 +129,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
              ),
 
-              //google + anything else buttons
 
-              // Row(
-              //   children: [
-              //     Image.asset('../images/pngegg.png',
-              //     height: 75,),
-              //   ],
-              // )
-
-               const SizedBox(height: 200),
+               const SizedBox(height: 160),
 
               //register
 
@@ -147,14 +140,14 @@ class _LoginScreenState extends State<LoginScreen> {
                  const Text("Don't have an account? "),
                   GestureDetector(
                     onTap: () {
-                      widget.showRegisterPage();
+                      print('Button was pressed');
+                      widget.showLoginPage();
                     },
-                    child: const Text(
-                      "Register now",
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 34, 67, 255),
-                        fontWeight: FontWeight.bold,
-                      ),
+                    child: const Text("Register now",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 34, 67, 255),
+                      fontWeight: FontWeight.bold,
+                    ),
                     ),
                   ),
                 ],
@@ -164,5 +157,8 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       )
     );
+
+
+
   }
 }

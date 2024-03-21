@@ -65,6 +65,9 @@ class _SneakerListScreenState extends State<SneakerListScreen> {
                 retailPrice: _sneakers![index].retailPrice,
                 description: _sneakers![index].description,
                 thumbnail: _sneakers![index].thumbnail,
+                stockxLink: _sneakers![index].stockxLink,
+                goatLink: _sneakers![index].goatLink,
+                flightClubLink: _sneakers![index].flightClubLink,
                             ),
               ),
             );

@@ -5,12 +5,18 @@ class SneakerCard extends StatelessWidget {
   final String retailPrice;
   final String description;
   final String thumbnail;
+  final String stockxLink;
+  final String goatLink;
+  final String flightClubLink;
   
   const SneakerCard({
     required this.shoeName,
     required this.retailPrice,
     required this.description,
     required this.thumbnail,
+    required this.stockxLink,
+    required this.goatLink,
+    required this.flightClubLink,
   });
 
   @override
@@ -39,7 +45,7 @@ class SneakerCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Retail Price: " + retailPrice),
-
+              
             ],
             )
           ],

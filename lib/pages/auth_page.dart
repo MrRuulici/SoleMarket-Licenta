@@ -1,25 +1,34 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sole_market_project/pages/login_screen.dart';
-import 'package:sole_market_project/widgets/bottom_nav_bar.dart';
+import 'package:sole_market_project/pages/signup_screen.dart';
 
-class AuthPage extends StatelessWidget {
+class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
 
-  ///this is for checking if the user is logged in or not, and redirecting to appropriate page
+  @override
+  State<AuthPage> createState() => _AuthPageState();
+}
+
+class _AuthPageState extends State<AuthPage> {
+
+  bool showLoginPage = true;
+
+  void toggleScreens() {
+    setState(() {
+      showLoginPage = !showLoginPage;
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(), 
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return const BottomNavBar();
+          if (showLoginPage) {
+            return LoginScreen(showRegisterPage: toggleScreens,);
+            
           }
           else {
-            return LoginScreen();
+            return SignupScreen(showLoginPage: toggleScreens,);
+            
           }
         }
-    ));
   }
-}
